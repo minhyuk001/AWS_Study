@@ -36,8 +36,8 @@ systemctl restart sshd
 apt update -y
 apt install curl jq -y
 sed -i "s/PasswordAuthentication no/PasswordAuthentication yes/g" /etc/ssh/sshd_config
-echo -e "Skills2024**\nSkills2024**" | passwd ubuntu
-echo "Port 2220" >> /etc/ssh/sshd_config
+echo -e "<비밀번호>**\n<비밀번호>**" | passwd ubuntu
+echo "Port (포트 번호)" >> /etc/ssh/sshd_config
 systemctl restart sshd
 ```
 
