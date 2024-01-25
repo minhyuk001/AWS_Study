@@ -19,12 +19,25 @@
 * 보안그룹 생성
 
 ## EC2 사용자 데이터베이스 소스
+
+### Linux
 ```java
 #!/bin/bash
 echo 'Port (포트 번호)' >> /etc/ssh/sshd_config
 systemctl restart sshd
 sed -i "s/PasswordAuthentication no/PasswordAuthentication yes/g" /etc/ssh/sshd_config
 echo "<AMI 이름>:<비밀번호>" | chpasswd
+systemctl restart sshd
+```
+
+### ubuntu
+```java
+#!/bin/bash
+apt update -y
+apt install curl jq -y
+sed -i "s/PasswordAuthentication no/PasswordAuthentication yes/g" /etc/ssh/sshd_config
+echo -e "Skills2024**\nSkills2024**" | passwd ubuntu
+echo "Port 2220" >> /etc/ssh/sshd_config
 systemctl restart sshd
 ```
 
