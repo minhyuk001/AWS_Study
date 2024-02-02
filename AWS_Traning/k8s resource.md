@@ -7,6 +7,11 @@ kubectl apply -f <filename>
 kubectl get <resource> -n <namespace>
 ```
 
+### Status Check
+```
+curl <alb-dns>/health
+```
+
 ### Deployment
 ```yaml
 apiVersion: apps/v1
