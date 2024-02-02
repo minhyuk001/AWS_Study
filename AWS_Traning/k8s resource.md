@@ -9,26 +9,36 @@ kubectl get <resource> -n <namespace>
 
 ### Deployment
 ```yaml
-deployment.yml
 apiVersion: apps/v1
 kind: Deployment
+
 metadata:
-  name: <NAME>
+  name: <deployment 이름>
+  namespace: <namespace 이름>
+  labels:
+    <key> : <value>  
+    
 spec:
+  replicas: <생성할 파드 수>
   selector:
     matchLabels:
-      run: nginx
-  replicas: 2
+      <key> : <value>
+      
   template:
     metadata:
       labels:
-        run: nginx
+        <key> : <value>
+        
     spec:
+      nodeSelector:
+        <Node key>: <Node Value>
+
       containers:
-      - name: <CONTAINER-NAME>
-        image: nginx:latest
+      - name: <컨테이너 이름>
+        image: <Docekr 이미지 경로>
         ports:
-        - containerPort: 80
+        - containerPort: <애플리케이션 포트>
+
         resources:
           limits:
             cpu: 500m
