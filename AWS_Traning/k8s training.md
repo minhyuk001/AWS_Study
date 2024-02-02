@@ -5,15 +5,6 @@ sudo chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin
 ```
 
-### docker install command
-
-```
-sudo yum install docker -y
-sudo usermod -aG docker <AMI 이름>
-sudo systemctl enable --now docker
-sudo chmod 666 /var/run/docker.sock
-```
-
 ### cluster yaml
 
 ```
