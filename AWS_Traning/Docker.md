@@ -16,6 +16,9 @@ FROM <사용할 언어>:<버전>
 RUN <실행할 코드>
 // RUN apt install curl -y
 
+USER <파일이름>
+// USER match
+
 COPY <파일 이름> .
 // COPY app.py .
 
