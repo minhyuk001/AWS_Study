@@ -56,14 +56,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: <service name>
-  namespace: <namespace>
+  name: <서비스 이름>
+  namespace: <네임스페이스 이름>
 spec:
   selector:
     <key>: <value>
   ports:
   - port: 80
-    targetPort: <application port>
+    targetPort: <애플리케이션 포트>
     protocol: TCP
   type: NodePort
 ```
@@ -73,12 +73,12 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: <ingress name>
-  namespace: <namespace>
+  name: <ingress 이름>
+  namespace: <네임스페이스 이름>
   annotations:
-    alb.ingress.kubernetes.io/load-balancer-name: <ALB name>
-    alb.ingress.kubernetes.io/scheme: <internet-facing(public) or internal(private)>
-    alb.ingress.kubernetes.io/subnets: <subnetid>, <subnetid>
+    alb.ingress.kubernetes.io/load-balancer-name: <ALB 이름>
+    alb.ingress.kubernetes.io/scheme: <>
+    alb.ingress.kubernetes.io/subnets: <서브넷 아이디>, <서브넷 아이디>
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/healthcheck-path: <>
 
@@ -91,7 +91,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: <service name>
+            name: <서비스 이름>
             port:
               number: 80
 ```
