@@ -11,9 +11,9 @@ sudo mv ./kubectl /usr/local/bin
 apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 metadata:
-  name: <cluster name>
-  region: <region>
-  version: "<kubectl version>"
+  name: <클러스터 이름>
+  region: <리전>
+  version: "<쿠버네티스 버전>"
   
 cloudWatch:
   clusterLogging:
@@ -27,29 +27,29 @@ cloudWatch:
 iam:
   withOIDC: true
 vpc:
-  id: <vpc id>
+  id: <vpc 아이디>
   subnets:
     public:
-      <region>a-pub: { id: (subnet-id) }
-      <region>b-pub: { id: (subnet-id) }
+      <리전>a-pub: { id: (서브넷 아이디) }
+      <리전>b-pub: { id: (서브넷 아이디) }
     private:
-      <region>a-priv: { id: (subnet-id) }
-      <region>b-priv: { id: (subnet-id) }
+      <리전>a-priv: { id: (서브넷 아이디) }
+      <리전>b-priv: { id: (서브넷 아이디) }
 
 managedNodeGroups:
-  - name: <Nodegroup name>
-    instanceName: <Name>
-    instanceType: <Type>
-    minSize: <min>
-    maxSize: <max>
-    desiredCapacity: <make Number>
+  - name: <노드그룹 이름>
+    instanceName: <인스턴스 이름>
+    instanceType: <인스턴스 타입>
+    minSize: <최소 노드 수>
+    maxSize: <최대 노드 수>
+    desiredCapacity: <생성할 노드 수>
     privateNetworking: true
     
     subnets:
-      - <region>a-priv
-      - <region>b-priv
-      - <region>a-pub
-      - <region>b-pub
+      - <리전>a-priv
+      - <리전>b-priv
+      - <리전>a-pub
+      - <리전>b-pub
     
     iam:
       withAddonPolicies:
