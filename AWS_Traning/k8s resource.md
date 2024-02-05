@@ -77,7 +77,7 @@ metadata:
   namespace: <네임스페이스 이름>
   annotations:
     alb.ingress.kubernetes.io/load-balancer-name: <ALB 이름>
-    alb.ingress.kubernetes.io/scheme: <>
+    alb.ingress.kubernetes.io/scheme: <> //internet-facing(Public), internal(Private)
     alb.ingress.kubernetes.io/subnets: <서브넷 아이디>, <서브넷 아이디>
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/healthcheck-path: <>
