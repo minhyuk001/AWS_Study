@@ -2,6 +2,21 @@
 * Provider = 0-Provider
 * VPC = 1-VPC
 
+### Terraform Setting
+```tf
+terraform init
+```
+
+### Terraform Start
+```tf
+terraform apply
+```
+
+### Terraform Remove
+```tf
+terraform destroy
+```
+
 ### Provider Terraform
 ```tf
 provider "aws" {
