@@ -33,7 +33,7 @@ provider "aws" {
 # 환경변수 정의
 variable "Vpc_Content" {
   default = {
-    default_name       = "skills"
+    default_name       = "<앞에 붙일 이름> 예) skills"
     vpc_name           = "skills-vpc"
     vpc_cidr           = "10.0.0.0/16"
     public_subnet_name = ["skills-pub-a", "skills-pub-b", "skills-pub-c"]
@@ -147,10 +147,51 @@ resource "aws_route_table_association" "private" {
   subnet_id         = aws_subnet.private[count.index].id
   route_table_id    = aws_route_table.private[count.index].id
 }
-```
 
-### EC2 instance Terraform
-```tf
+# 환경 변수 정의
+variable "Ec2_Content" {
+  default = {
+    security_group_name    = "skills-bastion-sg"
+    security_group_inbound = [22, 2220]
+    security_group_outbound = [80, 443]
+
+    instance_name = "skills-bastion"
+    instance_type = "c5.large"
+    instance_ami  = "ami-00ba43a774eb5870b"
+  }
+}
+
+# 보안 그룹 생성
+resource "aws_security_group" "skills_security_group" {
+  vpc_id = aws_vpc.skills_vpc.id
+  name   = var.Ec2_Content.security_group_name
+
+  # 인바운드
+  dynamic "ingress" {
+    for_each = var.Ec2_Content.security_group_inbound
+    content {
+      from_port   = ingress.value
+      to_port     = ingress.value
+      protocol    = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+    }
+  }
+
+  # 아웃바운드
+  dynamic "egress" {
+    for_each = var.Ec2_Content.security_group_outbound
+    content {
+      from_port   = egress.value
+      to_port     = egress.value
+      protocol    = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+    }
+  }
+
+  tags = { Name = var.Ec2_Content.security_group_name }
+}
+
+# EC2 인스턴스 생성
 resource "aws_instance" "skills_ec2" {
   ami           = var.Ec2_Content.instance_ami
   instance_type = var.Ec2_Content.instance_type
@@ -164,6 +205,9 @@ resource "aws_instance" "skills_ec2" {
     sudo echo -e "1234\n1234" | sudo passwd ec2-user
     systemctl restart sshd
   EOF
+  # 사용자 데이터 설정
+  tags = { Name = var.Ec2_Content.instance_name }
+}
   # 사용자 데이터 설정
   tags = { Name = var.Ec2_Content.instance_name }
 }
