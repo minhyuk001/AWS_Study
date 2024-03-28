@@ -5,6 +5,11 @@ sudo chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin
 ```
 
+### aws kubectl install web
+```
+https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html
+```
+
 ### kubectl file apply
 ```
 kubectl apply -f <filename>
