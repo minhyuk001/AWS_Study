@@ -10,6 +10,11 @@ sudo mv ./kubectl /usr/local/bin
 https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html
 ```
 
+### aws eksctl install web
+```
+https://docs.aws.amazon.com/emr/latest/EMR-on-EKS-DevelopmentGuide/setting-up-eksctl.html
+```
+
 ### kubectl file apply
 ```
 kubectl apply -f <filename>
