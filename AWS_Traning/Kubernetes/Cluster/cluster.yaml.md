@@ -52,3 +52,7 @@ managedNodeGroups:
     labels:
       <key>: <value>
 ```
+## 클러스터 생성
+```
+eksctl create cluster -f cluster.yaml
+```
