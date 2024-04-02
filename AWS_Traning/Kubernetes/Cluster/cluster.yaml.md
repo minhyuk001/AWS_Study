@@ -56,3 +56,7 @@ managedNodeGroups:
 ```
 eksctl create cluster -f cluster.yaml
 ```
+## 클러스터 삭제
+```
+eksctl delete cluster -f cluster.yaml
+```
