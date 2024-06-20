@@ -66,3 +66,21 @@
   * **Route**
     * **1. `skills-public-rt`, `skills-private-rt-a`, `skills-private-rt-b`이 생성되어 있는지 확인한다**
     * **2. A, B Public 서브넷이 `skills-public-rt`에 연결되어 있는지 확인한다**
+    * **3. A Private 서브넷이 `skills-private-rt-a`에 연결되어 있는지 확인한다**
+    * **4. B Private 서브넷이 `skills-private-rt-b`에 연결되어 있는지 확인한다**
+  * **IGW**
+    * **1. 인터넷 게이트웨이 이름이 `skills-igw`인지 확인한다**
+    * **2. `skills-public-rt`에 igw가 연결되어 있는지 확인한다**
+  * **NGW**
+    * **1. `skills-ngw-a`, `skills-ngw-b`가 생성되어 있는지 확인한다**
+    * **2. ngw에 올바른 서브넷이 연결되어 있는지 확인한다**
+    * **3. `skills-private-rt-a`, `skills-private-rt-b`에 각각 ngw가 연결되어 있는지 확인한다**
+  * **SG**
+    * **1. 보안그룹 이름이 `skills-sg`인지 확인한다**
+    * **2. 인바운드 규칙에 `22`, `2220`이 포함되어 있는지 확인한다**
+    * **3. 아웃바운드 규칙에 `443`, `ALL`이 포함되어 있는지 확인한다**
+  * **EC2**
+    * **1. Bastion 이름이 `skills-bastion`인지 확인한다**
+    * **2. Bastion 유형이 `t2.micro`인지 확인한다**
+    * **3. Bastion 운영체제가 `amazon linux`인지 확인한다**
+    * **4. Bastion 리전이 `ap-northeast-2`인지 확인한다**
